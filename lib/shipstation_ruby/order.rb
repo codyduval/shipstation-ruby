@@ -12,12 +12,12 @@ module ShipStationRuby
       service = OData::Service.new("https://data.shipstation.com/1.1", @auth)
       service.Orders(order_id)
       result = service.execute
-      order = result.first
-      order = JSON.parse(order.to_json)
+      single_result = result.first
+      json_hash = JSON.parse(single_result.to_json)
       #convert Hash into Mash for easy method-like access
-      order = Hashie::Mash.new(order)
+      json_mash = Hashie::Mash.new(json_hash)
       #convert CamelCase attributes into snake_case
-      @order = order.rubyify_keys!
+      return json_mash.rubyify_keys!
     end
 
     #returns all orders in an Array (as Mash objects)
