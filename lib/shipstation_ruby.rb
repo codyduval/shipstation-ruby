@@ -1,5 +1,7 @@
 require "httparty"
 require "hashie"
+require "json"
+require "ruby_odata"
 Dir[File.dirname(__FILE__) + '/shipstation_ruby/*.rb'].each do |file|
   require file
 end

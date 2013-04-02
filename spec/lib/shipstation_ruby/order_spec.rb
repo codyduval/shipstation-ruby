@@ -50,28 +50,33 @@ describe ShipStationRuby::Order do
       ShipStationRuby::Order.get('/Orders(21660574)', :basic_auth => {:username => "codyduval", :password => "coffee_bean"})
     end
 
-    it "must have a details method" do
-      order.must_respond_to :details
+    it "must have an attributes method" do
+      order.must_respond_to :attributes
     end
    
     it "must parse the api response from JSON to Hashie" do
-      order.details.must_be_instance_of Hashie::Mash
+      order.attributes.must_be_instance_of Hashie::Mash
     end
    
     it "must get the right Order" do
-      order.details.order_id.must_equal 21660574
+      order.attributes.order_id.must_equal 21660574
     end
 
     it "must show a store_id" do
-      order.details.store_id.must_equal 20979
+      order.attributes.store_id.must_equal 20979
     end
 
     it "must respond to a random attribute like WarehouseID (but as warehouse_id)" do
-      order.details.must_respond_to :warehouse_id
+      order.attributes.must_respond_to :warehouse_id
     end
 
     it "must not respond to an attribute that is not present in json" do
-      order.details.wont_respond_to :foo_bar_attribute
+      order.attributes.wont_respond_to :foo_bar_attribute
+    end
+
+    it "must set a new attribute to the right order" do
+      order.attributes.store_id=99999
+      order.attributes.store_id.must_equal 99999
     end
 
   end
