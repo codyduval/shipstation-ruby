@@ -1,84 +1,47 @@
 require_relative '../../spec_helper'
- 
+
 describe ShipStationRuby::Order do
    
   describe "default attributes" do
-
-    it "must include httparty methods" do
-      ShipStationRuby::Order.must_include HTTParty
+    it "must have a username and password" do
+      order_test = ShipStationRuby::Order.new("username","password")
+      order_test.auth[:username].must_equal "username"
+      order_test.auth[:password].must_equal "password"
     end
- 
-    it "must have the base url set to the ShipStation API endpoint" do
-      ShipStationRuby::Order.base_uri.must_equal 'https://data.shipstation.com/1.1'
-    end
-
-    it "must have a username and password and order_id" do
-      order = ShipStationRuby::Order.new("username","password", "12345")
-      order.auth[:username].must_equal "username"
-      order.auth[:password].must_equal "password"
-      order.order_id.must_equal "12345"
-    end
-  end
-
-  describe "default instance attributes" do
-
-    let(:order) { ShipStationRuby::Order.new("codyduval","coffee_bean", 21660574) }
-
-    it "must have an order_id attribute" do
-      order.must_respond_to :order_id
-    end
-
-    it "must have the right id" do
-      order.order_id.must_equal 21660574
-    end
-
   end
 
   describe "GET order" do
+    let(:order_test) { ShipStationRuby::Order.new("codyduval","coffee_bean") }
 
-    let(:order) { ShipStationRuby::Order.new("codyduval","coffee_bean", 21660574) }
-
-    before do
-      VCR.insert_cassette 'order', :record => :new_episodes
+    it "must get the right Order from the OData service" do
+      order_test.order(21660574).order_id.must_equal 21660574
     end
 
-    after do
-      VCR.eject_cassette
+    it "must return a Mash object" do
+      order_test.order(21660574).must_be_instance_of Hashie::Mash
     end
-
-    it "records the fixture" do
-      ShipStationRuby::Order.get('/Orders(21660574)', :basic_auth => {:username => "codyduval", :password => "coffee_bean"})
-    end
-
-    it "must have an attributes method" do
-      order.must_respond_to :attributes
-    end
-   
-    it "must parse the api response from JSON to Hashie" do
-      order.attributes.must_be_instance_of Hashie::Mash
-    end
-   
-    it "must get the right Order" do
-      order.attributes.order_id.must_equal 21660574
-    end
-
-    it "must show a store_id" do
-      order.attributes.store_id.must_equal 20979
-    end
-
-    it "must respond to a random attribute like WarehouseID (but as warehouse_id)" do
-      order.attributes.must_respond_to :warehouse_id
-    end
-
-    it "must not respond to an attribute that is not present in json" do
-      order.attributes.wont_respond_to :foo_bar_attribute
-    end
-
-    it "must set a new attribute to the right order" do
-      order.attributes.store_id=99999
-      order.attributes.store_id.must_equal 99999
-    end
-
   end
+
+  describe "GET orders" do
+    let(:order_test) { ShipStationRuby::Order.new("codyduval","coffee_bean") }
+
+    it "must return an array of Mash objects with the results" do
+      order_test.orders.must_be_instance_of Array
+    end
+  end
+
+  describe "GET filtered order" do
+    let(:order_test) { ShipStationRuby::Order.new("codyduval","coffee_bean") }
+
+    it "must get the correct filtered result with one parameter" do
+      order_test.filter(:CustomerID => 15843013).first.order_id.must_equal 21660574
+    end
+
+    it "must return an array of Mash objects with the results" do
+      order_test.filter(:OrderID => 21660574, :SellerID => 105162).first.order_id.must_equal 21660574
+    end
+  end
+
+
 end
 
