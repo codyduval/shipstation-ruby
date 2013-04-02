@@ -1,6 +1,6 @@
-shipstation-dock
+shipstation-ruby
 ================
 
 A Ruby wrapper for the ShipStation API.
 
-This is work-in-progress, so don't try and use it.
+This is work-in-progress.
