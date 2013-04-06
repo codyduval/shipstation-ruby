@@ -2,9 +2,8 @@ require "httparty"
 require "hashie"
 require "json"
 require "ruby_odata"
-Dir[File.dirname(__FILE__) + '/shipstation_ruby/*.rb'].each do |file|
-  require file
-end
+
+require "shipstation_ruby/order"
 
 class Hashie::Mash
   
@@ -21,15 +20,3 @@ class Hashie::Mash
   end
   
 end
-
-#Taken from ActiveSupport, this code converts all camel cased seperated values to underscore seperated values. So OrderID becomes order_id.
-class String
-  def underscore
-    self.gsub(/::/, '/').
-    gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-    gsub(/([a-z\d])([A-Z])/,'\1_\2').
-    tr("-", "_").
-    downcase
-  end
-end
-

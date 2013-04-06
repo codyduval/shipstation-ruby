@@ -1,9 +1,9 @@
 require_relative '../lib/shipstation_ruby'
  
 require 'minitest/autorun'
-# require 'webmock/minitest'
-# require 'vcr'
-begin; require 'turn/autorun'; rescue LoadError; end
+require 'webmock/minitest'
+require 'vcr'
+require 'turn/autorun'
  
 Turn.config do |c|
   c.format  = :outline
@@ -11,7 +11,7 @@ Turn.config do |c|
   c.verbose = true
 end
  
-# VCR.configure do |c|
-#   c.cassette_library_dir = 'spec/fixtures/shipstation_ruby_cassettes'
-#   c.hook_into :webmock
-# end
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/shipstation_ruby_cassettes'
+  c.hook_into :webmock
+end
