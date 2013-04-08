@@ -1,14 +1,6 @@
 require_relative '../../spec_helper'
 
 describe ShipStationRuby::Order do
-   
-  describe "default attributes" do
-    it "must have a username and password" do
-      order_test = ShipStationRuby::Order.new("username","password")
-      order_test.auth[:username].must_equal "username"
-      order_test.auth[:password].must_equal "password"
-    end
-  end
 
   describe "GET order" do
     let(:order_test) { ShipStationRuby::Order.new("codyduval","coffee_bean") }
