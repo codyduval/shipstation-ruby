@@ -9,6 +9,7 @@ require "ruby_odata"
 
 require "./lib/shipstation_ruby/client"
 require "./lib/shipstation_ruby/order"
+require "./lib/shipstation_ruby/carrier"
 require "./lib/shipstation_ruby/collection"
 
 class Hashie::Mash

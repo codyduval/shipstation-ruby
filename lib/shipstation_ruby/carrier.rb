@@ -1,10 +1,10 @@
 module ShipStationRuby
-  class Order
+  class Carrier
 
-    #client.orders.find(12345)
+    #client.carriers.find(12345)
     #Returns a single order in a Mash object
     def self.find(client,id)
-      client.Orders(id)
+      client.Carriers(id)
       result = client.execute
       single_result = result.first
       json_hash = JSON.parse(single_result.to_json)
@@ -14,11 +14,11 @@ module ShipStationRuby
       return json_mash.rubyify_keys!
     end
 
-    #client.orders.all
-    #returns all orders in an array of Hashie::Mash objects
+    #client.carriers.all
+    #returns all carriers in an array of Hashie::Mash objects
     #TODO - add pagination
     def self.all(client)
-      client.Orders()
+      client.Carriers()
       results = client.execute
       formatted_results = []
       results.each do |result|
@@ -29,7 +29,7 @@ module ShipStationRuby
       return formatted_results
     end
 
-    #client.orders.where("order_id"=>12345,"warehouse_id"=>987574)
+    #client.carriers.where("order_id"=>12345,"warehouse_id"=>987574)
     #returns an array of Hashie::Mash objects
     def self.where(client,filters={})
       final_string = ""
@@ -41,7 +41,7 @@ module ShipStationRuby
         final_string_array << filter_string
       end
       final_string = final_string_array.join(' and ')
-      client.Orders.filter("#{final_string}")
+      client.Carriers.filter("#{final_string}")
       results = client.execute
       formatted_results = []
       results.each do |result|
@@ -50,12 +50,6 @@ module ShipStationRuby
         formatted_results.push(result_mash.rubyify_keys!)
       end
       return formatted_results
-    end
-
-    def self.fields(client)
-      client.Orders()
-      fields = client.execute
-      puts fields
     end
 
   end
