@@ -7,13 +7,13 @@ describe ShipStationRuby::Order do
 
     it "must find the right Order from the OData service" do
       VCR.use_cassette('find_order') do
-        client.order.find(21660574).order_id.must_equal 21660574
+        client.orders.find(21660574).order_id.must_equal 21660574
       end
     end
 
     it "must return a Mash object" do
       VCR.use_cassette('find_order') do
-        client.order.find(21660574).must_be_instance_of Hashie::Mash
+        client.orders.find(21660574).must_be_instance_of Hashie::Mash
       end
     end
   end

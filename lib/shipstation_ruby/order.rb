@@ -3,16 +3,16 @@ module ShipStationRuby
 
     #client.orders.find(12345)
     #Returns a single order in a Mash object
-    def self.find(client,id)
-      client.Orders(id)
-      result = client.execute
-      single_result = result.first
-      json_hash = JSON.parse(single_result.to_json)
-      #convert Hash into Mash for easy method-like access
-      json_mash = Hashie::Mash.new(json_hash)
-      #convert CamelCase attributes into snake_case
-      return json_mash.rubyify_keys!
-    end
+    # def self.find(client,id)
+    #   client.Orders(id)
+    #   result = client.execute
+    #   single_result = result.first
+    #   json_hash = JSON.parse(single_result.to_json)
+    #   #convert Hash into Mash for easy method-like access
+    #   json_mash = Hashie::Mash.new(json_hash)
+    #   #convert CamelCase attributes into snake_case
+    #   return json_mash.rubyify_keys!
+    # end
 
     #client.orders.all
     #returns all orders in an array of Hashie::Mash objects

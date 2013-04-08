@@ -15,9 +15,10 @@ module ShipStationRuby
       options = args.last.is_a?(Hash) ? args.pop : {}
 
       # method == 'orders'
-      klass_symbol = method.singularize.camelize.to_sym
+      # klass_symbol = method.singularize.camelize.to_sym
+      klass = method.camelize
       # klass_symbol == :Orders
-      klass = ShipStationRuby.const_get(klass_symbol)
+      # klass = ShipStationRuby.const_get(klass_symbol)
       ShipStationRuby::Collection.new(@client, klass)
       # ShipStationRuby::klass.new()
        # @resource_cache[method][options.hash] = ZendeskAPI::Collection.new(self, ZendeskAPI.const_get(ZendeskAPI::Helpers.modulize_string(Inflection.singular(method))), options)
