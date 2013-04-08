@@ -1,6 +1,6 @@
 require_relative '../../spec_helper'
 
-describe ShipStationRuby::Order do
+describe "ShipStationRuby::Order metaclass" do
 
   describe "Find order" do
     let(:client) { ShipStationRuby::Client.new("codyduval","coffee_bean") }

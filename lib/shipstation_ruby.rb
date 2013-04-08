@@ -4,12 +4,9 @@ require "json"
 require "ruby_odata"
 
 # require "shipstation_ruby/client"
-# require "shipstation_ruby/order"
 # require "shipstation_ruby/collection"
 
 require "./lib/shipstation_ruby/client"
-require "./lib/shipstation_ruby/order"
-require "./lib/shipstation_ruby/carrier"
 require "./lib/shipstation_ruby/collection"
 
 class Hashie::Mash
