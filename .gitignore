@@ -14,3 +14,6 @@
 /log/*.log
 /tmp
 /solr/data/development/index
+
+# Ignore all VCR fixtures
+/spec/fixtures

@@ -1,17 +1,11 @@
 module ShipStationRuby
   class Order
-    
-    attr_accessor :auth   
 
-    def initialize(username, password)
-      @auth = {:username => username, :password => password}
-    end
-
-    #Returns one order in a Mash object
-    def order(order_id)
-      service = OData::Service.new("https://data.shipstation.com/1.1", @auth)
-      service.Orders(order_id)
-      result = service.execute
+    #client.orders.find(12345)
+    #Returns a single order in a Mash object
+    def self.find(client,id)
+      client.Orders(id)
+      result = client.execute
       single_result = result.first
       json_hash = JSON.parse(single_result.to_json)
       #convert Hash into Mash for easy method-like access
@@ -20,11 +14,12 @@ module ShipStationRuby
       return json_mash.rubyify_keys!
     end
 
-    #returns all orders in an Array (as Mash objects)
-    def orders
-      service = OData::Service.new("https://data.shipstation.com/1.1", @auth)
-      service.Orders()
-      results = service.execute
+    #client.orders.all
+    #returns all orders in an array of Hashie::Mash objects
+    #TODO - add pagination
+    def self.all(client)
+      client.Orders()
+      results = client.execute
       formatted_results = []
       results.each do |result|
         result_hash = JSON.parse(result.to_json)
@@ -34,18 +29,20 @@ module ShipStationRuby
       return formatted_results
     end
 
-    #Filters are added as parameters in the format :OrderID=>9999.  Multiple parameters will be submitted, and api will return result that matches all conditions
-    def filter(filters={})
+    #client.orders.where("order_id"=>12345,"warehouse_id"=>987574)
+    #returns an array of Hashie::Mash objects
+    def self.where(client,filters={})
       final_string = ""
       final_string_array = []
       filters.each do |attribute, value|
-        filter_string = "#{attribute} eq #{value}"
+        shipstation_style_attribute = attribute.to_s.classify.gsub(/Id/, 'ID')
+        puts shipstation_style_attribute
+        filter_string = "#{shipstation_style_attribute} eq #{value}"
         final_string_array << filter_string
       end
       final_string = final_string_array.join(' and ')
-      service = OData::Service.new("https://data.shipstation.com/1.1", @auth)
-      service.Orders.filter("#{final_string}")
-      results = service.execute
+      client.Orders.filter("#{final_string}")
+      results = client.execute
       formatted_results = []
       results.each do |result|
         result_hash = JSON.parse(result.to_json)

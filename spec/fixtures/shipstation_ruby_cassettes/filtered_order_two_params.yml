@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - '*/*; q=0.5, application/xml'
+      - ! '*/*; q=0.5, application/xml'
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
@@ -33,10 +33,10 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Sat, 06 Apr 2013 17:05:07 GMT
+      - Mon, 08 Apr 2013 19:12:19 GMT
     body:
-      encoding: UTF-8
-      string: "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<edmx:Edmx
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<edmx:Edmx
         Version=\"1.0\" xmlns:edmx=\"http://schemas.microsoft.com/ado/2007/06/edmx\">\r\n
         \ <edmx:DataServices xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"
         m:DataServiceVersion=\"1.0\">\r\n    <Schema Namespace=\"SS.WebData\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\"
@@ -917,7 +917,7 @@ http_interactions:
         Name=\"ProviderId\" />\r\n          </Dependent>\r\n        </ReferentialConstraint>\r\n
         \     </Association>\r\n    </Schema>\r\n  </edmx:DataServices>\r\n</edmx:Edmx>"
     http_version: 
-  recorded_at: Sat, 06 Apr 2013 17:04:54 GMT
+  recorded_at: Mon, 08 Apr 2013 19:12:18 GMT
 - request:
     method: get
     uri: https://codyduval:coffee_bean@data.shipstation.com/1.1/Orders?$filter=OrderID%20eq%2021660574%20and%20SellerID%20eq%20105162
@@ -926,7 +926,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - '*/*; q=0.5, application/xml'
+      - ! '*/*; q=0.5, application/xml'
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
@@ -951,17 +951,17 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Sat, 06 Apr 2013 17:05:07 GMT
+      - Mon, 08 Apr 2013 19:12:19 GMT
     body:
-      encoding: UTF-8
-      string: "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed
         xml:base=\"http://data.shipstation.com/1.1/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\"
         xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"
         xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Orders</title>\r\n
-        \ <id>http://data.shipstation.com/1.1/Orders</id>\r\n  <updated>2013-04-06T17:05:08Z</updated>\r\n
+        \ <id>http://data.shipstation.com/1.1/Orders</id>\r\n  <updated>2013-04-08T19:12:20Z</updated>\r\n
         \ <link rel=\"self\" title=\"Orders\" href=\"Orders\" />\r\n  <entry>\r\n
         \   <id>http://data.shipstation.com/1.1/Orders(21660574)</id>\r\n    <title
-        type=\"text\"></title>\r\n    <updated>2013-04-06T17:05:08Z</updated>\r\n
+        type=\"text\"></title>\r\n    <updated>2013-04-08T19:12:20Z</updated>\r\n
         \   <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\"
         title=\"Order\" href=\"Orders(21660574)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Store\"
         type=\"application/atom+xml;type=entry\" title=\"Store\" href=\"Orders(21660574)/Store\"
@@ -1038,5 +1038,5 @@ http_interactions:
         m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:Source m:null=\"true\"
         />\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>"
     http_version: 
-  recorded_at: Sat, 06 Apr 2013 17:04:54 GMT
+  recorded_at: Mon, 08 Apr 2013 19:12:18 GMT
 recorded_with: VCR 2.4.0
