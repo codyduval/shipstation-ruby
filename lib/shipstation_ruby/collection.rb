@@ -13,10 +13,8 @@ module ShipStationRuby
       result = @client.execute
       single_result = result.first
       json_hash = JSON.parse(single_result.to_json)
-      #convert Hash into Mash for easy method-like access
-      json_mash = Hashie::Mash.new(json_hash)
-      #convert CamelCase attributes into snake_case
-      return json_mash.rubyify_keys!
+      json_rash = Hashie::Rash.new(json_hash)
+      return json_rash
     end
 
     def all
@@ -25,8 +23,8 @@ module ShipStationRuby
       formatted_results = []
       results.each do |result|
         result_hash = JSON.parse(result.to_json)
-        result_mash = Hashie::Mash.new(result_hash)
-        formatted_results.push(result_mash.rubyify_keys!)
+        result_rash = Hashie::Rash.new(result_hash)
+        formatted_results.push(result_rash)
       end
       return formatted_results
     end
@@ -53,11 +51,12 @@ module ShipStationRuby
       formatted_results = []
       results.each do |result|
         result_hash = JSON.parse(result.to_json)
-        result_mash = Hashie::Mash.new(result_hash)
-        formatted_results.push(result_mash.rubyify_keys!)
+        result_rash = Hashie::Rash.new(result_hash)
+        formatted_results.push(result_rash)
       end
       return formatted_results
     end
+
 
     def fields
       @resource.fields(@client)

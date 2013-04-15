@@ -20,4 +20,16 @@ describe ShipStationRuby::Collection do
     end
   end
 
+  describe "It must correctly find Warehouse resource" do
+    let(:client) { ShipStationRuby::Client.new("codyduval","coffee_bean") }
+
+    it "must contain correct client and class" do
+      @resource = "warehouses"
+      collection = ShipStationRuby::Collection.new(@client, @resource)
+      
+      collection.client.must_equal @client
+      collection.resource.must_equal "warehouses"
+    end
+  end
+
 end
