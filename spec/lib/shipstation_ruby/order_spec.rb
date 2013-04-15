@@ -11,9 +11,9 @@ describe "ShipStationRuby::Order metaclass" do
       end
     end
 
-    it "must return a Mash object" do
+    it "must return a Rash object" do
       VCR.use_cassette('find_order') do
-        client.orders.find(21660574).must_be_instance_of Hashie::Mash
+        client.orders.find(21660574).must_be_instance_of Hashie::Rash
       end
     end
   end
@@ -21,7 +21,7 @@ describe "ShipStationRuby::Order metaclass" do
   describe "all orders" do
     let(:client) { ShipStationRuby::Client.new("codyduval","coffee_bean") }
 
-    it "must return an array of Mash objects" do
+    it "must return an array of Rash objects" do
       VCR.use_cassette('all_orders') do
         client.orders.all.must_be_instance_of Array
       end

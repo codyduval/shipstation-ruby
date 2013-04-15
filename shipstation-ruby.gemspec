@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
 
 
   gem.add_dependency 'httparty'
-  gem.add_dependency 'hashie'
+  gem.add_dependency 'rash'
   gem.add_dependency 'ruby_odata'
   gem.add_development_dependency 'minitest'
   gem.add_development_dependency 'turn'
