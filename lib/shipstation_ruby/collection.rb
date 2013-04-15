@@ -37,10 +37,17 @@ module ShipStationRuby
       filters.each do |attribute, value|
         shipstation_style_attribute = attribute.to_s.classify.gsub(/Id/, 'ID')
         puts shipstation_style_attribute
-        filter_string = "#{shipstation_style_attribute} eq #{value}"
+        puts value
+        if value.is_a?(Integer)
+          filter_string = "#{shipstation_style_attribute} eq #{value}"
+        else
+          filter_string = "#{shipstation_style_attribute} eq '#{value}'"
+        end
+
         final_string_array << filter_string
       end
       final_string = final_string_array.join(' and ')
+      puts final_string
       @client.send("#{@resource}").filter("#{final_string}")
       results = @client.execute
       formatted_results = []
