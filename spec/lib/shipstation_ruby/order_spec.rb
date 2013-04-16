@@ -46,6 +46,10 @@ describe "ShipStationRuby::Order metaclass" do
     end
   end
 
+  describe "Update order attributes" do
+    
+  end
+
 
 end
 
