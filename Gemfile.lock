@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     shipstation-ruby (0.0.1)
-      httparty
       rash
       ruby_odata
 
@@ -17,14 +16,10 @@ GEM
     backports (3.3.0)
     crack (0.3.2)
     hashie (2.0.3)
-    httparty (0.11.0)
-      multi_json (~> 1.0)
-      multi_xml (>= 0.5.2)
     i18n (0.6.4)
     mime-types (1.22)
     minitest (4.7.1)
     multi_json (1.7.2)
-    multi_xml (0.5.3)
     nokogiri (1.5.9)
     rake (10.0.4)
     rash (0.4.0)
