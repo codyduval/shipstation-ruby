@@ -2,11 +2,11 @@ module ShipStationRuby
   class Client
     attr_accessor :auth, :client
 
-    def initialize(username, password)
+    def initialize(username = ShipStationRuby.username, password = ShipStationRuby.password)
       raise ArgumentError unless username && password
       @auth = {:username => username, :password => password}
 
-      @client = OData::Service.new("https://data.shipstation.com/1.1", @auth)
+      @client = OData::Service.new(API_BASE, @auth)
       self
     end
 
