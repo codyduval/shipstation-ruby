@@ -2,7 +2,6 @@ require_relative '../../spec_helper'
 
 describe ShipStationRuby::Client do
   it "sets authentication on initialize with passed parameters" do
-    skip("Enter your shipstation credentials in spec_helper")
     client_test = VCR.use_cassette('get_metadata') do
       ShipStationRuby::Client.new
     end

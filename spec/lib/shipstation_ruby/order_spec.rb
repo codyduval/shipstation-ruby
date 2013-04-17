@@ -3,7 +3,7 @@ require_relative '../../spec_helper'
 describe "ShipStationRuby::Order metaclass" do
 
   describe "Find order" do
-    let(:client) { ShipStationRuby::Client.new("codyduval","coffee_bean") }
+    let(:client) { ShipStationRuby::Client.new }
 
     it "must find the right Order from the OData service" do
       VCR.use_cassette('find_order') do
@@ -19,7 +19,7 @@ describe "ShipStationRuby::Order metaclass" do
   end
 
   describe "all orders" do
-    let(:client) { ShipStationRuby::Client.new("codyduval","coffee_bean") }
+    let(:client) { ShipStationRuby::Client.new }
 
     it "must return an array of Rash objects" do
       VCR.use_cassette('all_orders') do
@@ -29,7 +29,7 @@ describe "ShipStationRuby::Order metaclass" do
   end
 
   describe "GET filtered order" do
-    let(:client) { ShipStationRuby::Client.new("codyduval","coffee_bean")  }
+    let(:client) { ShipStationRuby::Client.new }
 
     it "must get the correct filtered result with one parameter" do
       VCR.use_cassette('filtered_order_one_param') do
