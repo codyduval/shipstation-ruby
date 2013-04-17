@@ -8,6 +8,16 @@ This is version 0.0.1 of the gem.  It currently only supports querying and filte
 ## Installation
 
 ShipStation-Ruby is packaged as a Ruby gem. We recommend you install it with [Bundler](http://gembundler.com/) by adding the following line to your Gemfile:
+=======
+[ShipStation](http://ww.shipstation.com/)'s Ruby client library is an interface to its
+[OAuth API](http://api.shipstation.com/MainPage.ashx).
+
+
+## Installation
+
+ShipStation-Ruby is packaged as a Ruby gem. We recommend you install it with
+[Bundler](http://gembundler.com/) by adding the following line to your Gemfile:
+>>>>>>> pull-out-auth
 
 ``` ruby
 gem 'shipstation-ruby', '~> 0.0.1'

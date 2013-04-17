@@ -57,10 +57,5 @@ module ShipStationRuby
       return formatted_results
     end
 
-
-    def fields
-      @resource.fields(@client)
-    end
-
   end
 end

@@ -1,7 +1,7 @@
 require_relative '../../spec_helper'
 
 describe ShipStationRuby::Collection do
-  let(:client) { ShipStationRuby::Client.new("codyduval","coffee_bean") }
+  let(:client) { ShipStationRuby::Client.new }
 
   it "initializes new Collection" do
     @resource = "orders"
@@ -9,7 +9,7 @@ describe ShipStationRuby::Collection do
   end
 
   describe "It must correctly find Order resource" do
-    let(:client) { ShipStationRuby::Client.new("codyduval","coffee_bean") }
+    let(:client) { ShipStationRuby::Client.new }
 
     it "must contain correct client and class" do
       @resource = "orders"
@@ -21,7 +21,7 @@ describe ShipStationRuby::Collection do
   end
 
   describe "It must correctly find Warehouse resource" do
-    let(:client) { ShipStationRuby::Client.new("codyduval","coffee_bean") }
+    let(:client) { ShipStationRuby::Client.new }
 
     it "must contain correct client and class" do
       @resource = "warehouses"
