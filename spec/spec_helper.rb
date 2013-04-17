@@ -18,5 +18,9 @@ end
 
 #environment vars
 include ShipStationRuby
-ShipStationRuby.username = 'codyduval'
-ShipStationRuby.password = 'coffee_bean'
+ShipStationRuby.username = 'shipstation_username'
+ShipStationRuby.password = 'shipstation_password'
+
+ShipStationRuby.username != 'shipstation_username' or raise(
+        ConfigurationError, "ShipStationRuby username and password not configured"
+  )
